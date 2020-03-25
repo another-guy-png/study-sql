@@ -1,18 +1,18 @@
 SELECT:
 -- Seleciona uma determinada coluna da tabela.
 
-	// Seleciona essas colunas
+	// Seleciona essas colunas.
 	SELECT coluna1,coluna2
 	FROM tabela; 
 
-	//Seleciona todas as colunas
+	//Seleciona todas as colunas.
 	SELECT *
 	FROM tabela;
 
 DISTINCT:
 -- Omitir dados duplicados, retorna apenas valores distintos.
 
-	// Seleciona valores distintos dessas colunas
+	// Seleciona valores distintos dessas colunas.
 	SELECT DISTINCT coluna1, coluna2
 	FROM tabela;
 	
@@ -32,23 +32,23 @@ COUNT:
 	SELECT COUNT(*)
 	FROM tabela;
 
-	// Especifica por parametro
+	// Especifica por parametro.
 	SELECT COUNT(coluna1)
 	FROM tabela;
 
 TOP:
 -- Filtras a quantidade de retorno de dados.
 
-	// Seleciona apenas os 10 primeiros resultados
+	// Seleciona apenas os 10 primeiros resultados.
 	SELECT TOP 10 *
-	FROM tabela
+	FROM tabela;
 
 ORDER BY:
 -- Ordena de acordo com o parametro.
 
 	SELECT coluna1, coluna2
 	FROM tabela
-	ORDER BY coluna1 asc/desc
+	ORDER BY coluna1 asc/desc;
 
 BETWEEN:
 -- Usado para encontrar um valor entre o valor minimo e o valor maximo.
@@ -64,7 +64,7 @@ BETWEEN:
 	WHERE coluna1 NOT BETWEEN 1000 AND 1500;
 
 IN:
--- Para verificar se um valor corresponde com qualquer valor passado na lista
+-- Para verificar se um valor corresponde com qualquer valor passado na lista.
 
 	// Pegando todos os valores vermelho e preto da coluna color.
 	SELECT *
@@ -77,8 +77,27 @@ IN:
 	WHERE color IN ('red', 'black');
 
 LIKE:
--- Procura o lugar de uma sequência para corresponder a uma sequência de caracter
+-- Procura o lugar de uma sequência para corresponder a uma sequência de caracter.
 
 	SELECT *
 	FROM tabela 
 	WHERE valor LIKE 'valo%';
+
+MIN, MAX, SUM and AVG:
+-- Funções de agregação que basicamente combinam dados de uma tabela em um resultado.
+
+	// Soma todos os valores dessa coluna.
+	SELECT SUM (coluna1) AS "apelido_coluna"
+	FROM tabela;
+
+	// Pega o menor valor dessa coluna.
+	SELECT MIN (coluna1) AS "apelido_coluna"
+	FROM tabela;
+
+	// Pega o maior valor dessa coluna.
+	SELECT MAX (coluna1) AS "apelido_coluna"
+	FROM tabela;
+
+	// A media da soma dos valores da coluna.
+	SELECT SUM (coluna1) AS "apelido_coluna"
+	FROM tabela;
