@@ -17,7 +17,7 @@ DISTINCT:
 	FROM tabela;
 	
 WHERE:
--- Especifica uma instrução, adciona um filtro.
+-- Especifica uma instrução, adciona um filtro (condição).
 
 	[ OPERADOR   -  DESCRIÇÃO   ]
 	[   <>          DIFERENTE DE]
@@ -74,7 +74,7 @@ IN:
 	// Diferente de vermelho e preto.
 	SELECT *
 	FROM tabela
-	WHERE color IN ('red', 'black');
+	WHERE color NOT IN ('red', 'black');
 
 LIKE:
 -- Procura o lugar de uma sequência para corresponder a uma sequência de caracter.
@@ -99,5 +99,13 @@ MIN, MAX, SUM and AVG:
 	FROM tabela;
 
 	// A media da soma dos valores da coluna.
-	SELECT SUM (coluna1) AS "apelido_coluna"
+	SELECT AVG (coluna1) AS "apelido_coluna"
 	FROM tabela;
+
+GROUP bytes:
+-- Divide o resultado por grupos (distinct padrão).
+
+	// Completa a função e agrupa todos os itens da coluna1
+	SELECT coluna1, funcao(coluna2)
+	FROM tabela
+	GROUP BY coluna1;
