@@ -102,10 +102,124 @@ MIN, MAX, SUM and AVG:
 	SELECT AVG (coluna1) AS "apelido_coluna"
 	FROM tabela;
 
-GROUP bytes:
+GROUP BY:
 -- Divide o resultado por grupos (distinct padrão).
 
 	// Completa a função e agrupa todos os itens da coluna1
 	SELECT coluna1, funcao(coluna2)
 	FROM tabela
 	GROUP BY coluna1;
+
+HAVING:
+-- Filtrar resultado de agrupamento.
+
+	// Aplicado depois que os dados foram agrupados diferente do 'WHERE'.
+	SELECT coluna1, funcao(coluna2)
+	FROM tabela
+	GROUP BY coluna1
+	HAVING condicao;
+
+	//Selecionando as colunas com de 1 a 5.
+	SELECT coluna1, COUNT(coluna1)
+	FROM tabela
+	GROUP BY coluna1
+	HAVING COUNT(coluna1) BETWEEN 1 AND 5;
+
+AS:
+-- Renomear colunas (dar apelidos)
+
+	SELECT coluna1 AS 'apelido' 
+	FROM tabela
+
+LIMIT and OFFSET:
+-- 'LIMIT' reduzirá o número de linhas a serem retornadas e o 'OFFSET' opcional especificará 
+	de onde começar a contar o número de linhas.
+
+	SELECT * 
+	FROM tabela 
+	LIMIT 3 OFFSET 3
+
+JOIN:
+-- Utilizado para acessar outras tabelas.
+
+-- TABELA REFERENCIA:
+
+	[---------+---------]
+	[	A	  |    B    ]
+	[id nome  | id nome ]
+	[---------+---------]
+	[1 Robo   |1 Espada ]
+	[2 Macaco |2 Robo   ]
+	[3 Samurai|3 Mario  ]
+	[4 Monitor|4 Samurai]
+	[---------+---------]
+
+
+INNER JOIN:
+-- Seleciona registros que possuem valores correspondentes nas duas tabelas (coluna em comum).
+
+	// Ambos possuem a coluna 'id'.
+	SELECT M.coluna1, B.coluna2, B.coluna3
+	FROM tabela1 M
+	INNER JOIN tabela2 B ON B.id = M.id;
+
+	// Tabela cartesiana, une as duas tabelas.
+	SELECT *
+	FROM tabelaA
+	INNER JOIN tabelaB ON tabelaA.nome = tabelaB.nome;
+	
+	RETORNO:
+	[id nome   |id nome  ]
+	[----------+---------]
+	[1  Robo   |2 Robo   ]
+	[3  Samurai|4 Samurai]
+
+FULL OUTER JOIN:
+-- Retorna o conjunto de dados correspondentes da tabelaA e TabelaB.
+
+	SELECT *
+	FROM tabelaA
+	FULL OUTER JOIN tabelaB ON tabelaA.nome = tabelaB.nome;
+
+	RETORNO:
+	[id nome   |id nome  ]
+	[----------+---------]
+	[1  Robo   |2 Robo   ]
+	[2  Macaco |   NULL  ]
+	[3  Samurai|4 Samurai]
+	[4  Monitor|   NULL  ]
+	[   NULL   |1 Espada ]
+	[   NULL   |3 Mario  ]
+
+LEFT OUTER JOIN:
+-- Retorna o conjunto de dados correspondentes da tabelaA e TabelaB, se não houver dados ele preenche cm Null.
+
+	SELECT *
+	FROM tabelaA
+	LEFT OUTER JOIN tabelaB ON tabelaA.nome = tabelaB.nome;
+
+	RETORNO:
+	[id nome   |id nome  ]
+	[----------+---------]
+	[1  Robo   |2 Robo   ]
+	[2  Macaco |   NULL  ]
+	[3  Samurai|4 Samurai]
+	[4  Monitor|   NULL  ]
+
+RIGHT OUTER JOIN:
+-- Retorna o conjunto de dados correspondentes da TabelaB e tabelaA, se não houver dados ele preenche cm Null.
+
+	SELECT *
+	FROM tabelaA
+	LEFT OUTER JOIN tabelaB ON tabelaA.nome = tabelaB.nome;
+
+	RETORNO:
+	[id nome   |id nome  ]
+	[----------+---------]
+	[   NULL   |1 Espada ]
+	[1 Robo    |2 Robo   ]
+	[   NULL   |3 Mario  ]
+	[3 Samurai |4 Samurai]
+
+
+
