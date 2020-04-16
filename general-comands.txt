@@ -1,0 +1,12 @@
+OPERADORES:
+
+VALORES NULOS E NÃO NULOS:
+
+    SELECT coluna1
+    FROM tabela
+    WHERE coluna1 IS NULL;
+
+
+    SELECT coluna1
+    FROM tabela
+    WHERE coluna1 IS NOT NULL;

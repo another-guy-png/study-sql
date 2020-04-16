@@ -140,14 +140,6 @@ AS:
 	SELECT coluna1 AS 'apelido' 
 	FROM tabela
 
-LIMIT and OFFSET:
--- 'LIMIT' reduzirá o número de linhas a serem retornadas e o 'OFFSET' opcional especificará 
-	de onde começar a contar o número de linhas.
-
-	SELECT * 
-	FROM tabela 
-	LIMIT 3 OFFSET 3
-
 JOIN:
 -- Utilizado para acessar outras tabelas.
 
